@@ -27,3 +27,14 @@ VALUES ('Pagar factura de luz', '2024-02-29 14:20:00', '2024-03-03 18:00:00', 0,
 -- Tarea recurrente
 INSERT INTO tasks (task_name, created_at, due_date, completed, completed_at)
 VALUES ('Hacer ejercicio', '2024-02-25 08:00:00', NULL, 1, '2024-02-28 07:30:00');
+
+use journal;
+CREATE TABLE users (
+id_user INT auto_increment primary key,
+userName VARCHAR(30) not null,
+nickName VARCHAR(30) not null,
+bithday date, 
+email VARCHAR(30) not null,
+image VARCHAR(200),
+userPassword VARCHAR(200) not null
+);
