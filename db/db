@@ -1,0 +1,29 @@
+CREATE DATABASE journal;
+use journal;
+CREATE TABLE tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    task_name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    due_date DATETIME,
+    completed TINYINT DEFAULT 0,
+    completed_at TIMESTAMP
+);
+-- Tarea pendiente sin fecha de vencimiento
+INSERT INTO tasks (task_name, created_at, due_date, completed, completed_at)
+VALUES ('Comprar leche', '2024-02-29 10:00:00', NULL, 0, NULL);
+
+-- Tarea pendiente con fecha de vencimiento
+INSERT INTO tasks (task_name, created_at, due_date, completed, completed_at)
+VALUES ('Preparar presentación', '2024-02-28 15:30:00', '2024-03-05 09:00:00', 0, NULL);
+
+-- Tarea completada
+INSERT INTO tasks (task_name, created_at, due_date, completed, completed_at)
+VALUES ('Llamar al cliente', '2024-02-27 11:45:00', NULL, 1, '2024-02-28 09:20:00');
+
+-- Tarea pendiente con fecha de vencimiento próxima
+INSERT INTO tasks (task_name, created_at, due_date, completed, completed_at)
+VALUES ('Pagar factura de luz', '2024-02-29 14:20:00', '2024-03-03 18:00:00', 0, NULL);
+
+-- Tarea recurrente
+INSERT INTO tasks (task_name, created_at, due_date, completed, completed_at)
+VALUES ('Hacer ejercicio', '2024-02-25 08:00:00', NULL, 1, '2024-02-28 07:30:00');
