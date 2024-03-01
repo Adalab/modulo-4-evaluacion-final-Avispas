@@ -1,0 +1,91 @@
+# Task and User Management API
+
+This project is an API developed in Node.js and Express.js for managing tasks and users, using a MySQL database to store the information.
+
+## Main Features
+
+### Task Management
+
+- **Create Task**: Allows creating a new task by providing details such as name, creation date, due date, and completion status.
+
+  ```json
+  POST /tasks
+  {
+    "task_name": "Buy milk",
+    "created_at": "2024-02-29 10:00:00",
+    "due_date": null,
+    "completed": 0,
+    "completed_at": null
+  }
+
+  ```
+
+- **List Tasks**: Retrieves all tasks stored in the database.
+  GET /tasks
+
+- **List Tasks by Status**: Filters tasks by their completion status.
+  GET /tasks/completed
+
+- **Update Task**: Updates the information of an existing task.
+  PUT /tasks/:id
+  {
+  "task_name": "Buy milk",
+  "created_at": "2024-02-29 10:00:00",
+  "due_date": null,
+  "completed": 1,
+  "completed_at": "2024-03-01 09:30:00"
+  }
+
+- \*\*Delete Task: Deletes a task from the database.
+  DELETE /tasks/:id
+
+### Task Management
+
+- **User Registration**: Allows a new user to register in the system by providing their username, email, password, and optional details such as date of birth and profile picture.
+  POST /register
+  {
+  "username": "example",
+  "email": "example@example.com",
+  "userpassword": "password123",
+  "birthday": "1990-01-01",
+  "image": "http://example.com/image.jpg"
+  }
+
+- **Login**: Allows an existing user to log in by providing their email and password.
+  POST /login
+  {
+  "email": "example@example.com",
+  "userpassword": "password123"
+  }
+
+- **Logout**: Allows an authenticated user to log out, invalidating their JWT token.
+  PUT /logout
+
+- **Get User Profile**: Retrieves the profile information of the authenticated user.
+  GET /profile
+
+## Configuration
+
+### Prerequisites
+
+Node.js installed on your system.
+MySQL installed and running.
+
+### Installation
+
+Clone this repository to your computer.
+Run npm install to install all dependencies.
+
+### Database Configuration
+
+Execute the provided SQL script on your MySQL server to create the necessary database and tables.
+Ensure to configure environment variables in a .env file for the database connection.
+
+### Usage
+
+Start the server by running npm start.
+Access the API through http://localhost:4500.
+
+## Author
+
+This project was developed by Ángela Ávila Lasanta.

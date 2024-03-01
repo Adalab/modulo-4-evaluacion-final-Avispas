@@ -258,10 +258,23 @@ api.post('/login', async (request, response) => {
 api.get("/profile", authenticateToken, async (req, res) => {
     let sql = `SELECT * FROM users WHERE email= ?`;
     const connect = await connect_db();
-    const [profile] = await connect.query(sql, [req.user.email]);
+    const [profile, fields] = await connect.query(sql, [req.user.email]);
     connect.end();
     const response = {
       profile: profile,
     };
-    res.json({ message: 'Authorized access', user: req.user });
+    res.json({ message: 'Authorized access', response});
+    console.log(response);
   });
+
+// Cerrar sesión   
+api.put('/logout', async (req, res) => {
+  const authHeader = req.headers["authorization"];
+  jwt.sign(authHeader, "", {expiresIn: 1}, (logout, err) => {
+    if (logout) {
+      res.send({msg: 'You have been desconected'});
+    } else { 
+      res.send ({ msg: "Error"});
+    }
+  });
+});
