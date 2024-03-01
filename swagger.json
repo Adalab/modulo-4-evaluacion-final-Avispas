@@ -1,0 +1,87 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Journal",
+      "version": "1.0.0",
+      "description": "API for managing tasks and users "
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3112",
+        "description": "Servidor de desarrollo"
+      }
+    ],
+    "paths": {
+      "/tasks": {
+        "post": {
+          "summary": "Create your to do",
+          "responses": {
+            "200": {
+              "description": "Succesful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/task"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/tasks": {
+        "get": {
+          "summary": "To do list",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NewProject"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Proyecto creado exitosamente"
+            }
+          }
+        }
+      },
+      "/tasks/{idTask}": {
+        "get": {
+          "summary": "Obtain tasks completed",
+          "parameters": [
+            {
+              "name": "idTask",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa"
+            },
+            "404": {
+              "description": "Task dont found"
+            }
+          }
+        }
+      }
+    }
+  }
