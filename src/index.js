@@ -250,8 +250,8 @@ api.post('/login', async (request, response) => {
     //Crear el token para enviar al front
     const token = generateToken(userForToken);
    console.log(token);
-    //Finalmente, si todo es correcto, la función responde con un estado 200 y envía un objeto JSON con el token, el nombre de usuario y el nombre real del usuario.
-    response.status(200).json({ token, email: user.email });
+    //Finalmente, si todo es correcto, la función responde con un estado 200 y envía un objeto JSON con el token,  y el email del usuario.
+    response.status(200).json({ "token": token, email: user.email });
   });
 
 //Get info PROFILE
